@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[时乃天道]]></title>
   <subtitle><![CDATA[路漫漫其修远兮，吾将上下而求索]]></subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="/https://sntd.github.io/atom.xml" rel="self"/>
   <link href="https://sntd.github.io/"/>
   <updated>2015-08-18T14:04:05.000Z</updated>
   <id>https://sntd.github.io/</id>
