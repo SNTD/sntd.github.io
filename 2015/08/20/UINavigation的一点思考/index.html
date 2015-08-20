@@ -47,7 +47,7 @@
 <meta property="og:url" content="https://sntd.github.io/2015/08/20/UINavigation的一点思考/index.html">
 <meta property="og:site_name" content="时乃天道">
 <meta property="og:description" content="UINavigationBar最近在项目中引入了ZSSRichTextEditor用来编辑HTML文本,结果Push的时候ZSSRichTextEditor用的原生的ViewController跟项目中自定义的NavigationController产生了冲突,导致了ZSSRichTextEditor缺失了NavigationBar,查看代码后`self.navigationBar.hidden">
-<meta property="og:updated_time" content="2015-08-20T13:20:01.000Z">
+<meta property="og:updated_time" content="2015-08-20T13:27:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于UINavigationBar 和 UINavigationController的一点思考">
 <meta name="twitter:description" content="UINavigationBar最近在项目中引入了ZSSRichTextEditor用来编辑HTML文本,结果Push的时候ZSSRichTextEditor用的原生的ViewController跟项目中自定义的NavigationController产生了冲突,导致了ZSSRichTextEditor缺失了NavigationBar,查看代码后`self.navigationBar.hidden">
@@ -262,9 +262,9 @@
      }
      <span class="keyword">return</span> <span class="literal">YES</span>;
  }
-</code></pre><p>发现在NavigationController中手势占据了整个页面，**由此知道手势发生了冲突，于是在gestureRecognizerShouldBegin 中 return NO ,根据手势响应链,手势接着传递给了ViewController，于是问题解决了,并由此得知:</p>
+</code></pre><p>发现在NavigationController中手势占据了整个页面，<strong>由此知道手势发生了冲突,有两种解决办法,手势添加在View的左半面或者在gestureRecognizerShouldBegin 中 return NO ,根据手势响应链,手势接着传递给了ViewController，于是问题解决了,并由此得知:</strong></p>
 <p><code>- (instancetype)initWithRootViewController:(UIViewController *)rootViewController;</code></p>
-<p>UINavigationController的View涂层在ViewControoler之上,所以UINavigationBar 和 手势可以始终悬浮在ViewController之上,用来实现类似UIWindow添加View始终悬浮的效果**</p>
+<p><strong>UINavigationController的View涂层在ViewControoler之上,所以UINavigationBar 和 手势可以始终悬浮在ViewController之上,可以用来实现类似UIWindow添加View始终悬浮的效果</strong></p>
 </span>
       
     </div>
