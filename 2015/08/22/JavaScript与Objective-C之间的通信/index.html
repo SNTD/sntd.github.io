@@ -51,7 +51,7 @@ Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配�
 <meta property="og:description" content="最近公司用Ping++集成了第三方支付，并且微信端也集成了这个功能，而微信付款时需要调用原生的支付宝支付或者微信支付，由此引出了JS调用OC方法的问题。
 Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配，从而完成一些特定的工作譬如
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLR">
-<meta property="og:updated_time" content="2015-08-22T15:24:01.000Z">
+<meta property="og:updated_time" content="2015-08-22T15:30:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS7之后JavaScript与Objective-C之间的通信">
 <meta name="twitter:description" content="最近公司用Ping++集成了第三方支付，并且微信端也集成了这个功能，而微信付款时需要调用原生的支付宝支付或者微信支付，由此引出了JS调用OC方法的问题。
@@ -255,7 +255,7 @@ Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配�
     }
     <span class="keyword">return</span> <span class="literal">YES</span>;
 }
-</code></pre><p>但是iOS7之后, iOS 7 引入了 JavaScriptCore 库，它把 WebKit 的 JavaScript 引擎用 Objective-C 封装,让JavaScript与Objective-C之间的通信变的非常简单。</p>
+</code></pre><p>但是iOS7之后, iOS 7 引入了 JavaScriptCore 库，它把 WebKit 的 JavaScript 引擎用 Objective-C 封装,让JavaScript与Objective-C之间的通信变的非常简单。首先导入JavaScriptCore.framework框架, 然后</p>
 <p>JS端：</p>
 <pre><code><span class="tag">TXBB_IOS_SDK</span><span class="class">.callPay</span>(<span class="tag">charge</span>, <span class="tag">this</span><span class="class">.success</span>, <span class="tag">this</span><span class="class">.cancel</span>);
 </code></pre><p>OC端:</p>
