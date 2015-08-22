@@ -4,7 +4,7 @@
   <subtitle><![CDATA[路漫漫其修远兮，吾将上下而求索]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sntd.github.io/"/>
-  <updated>2015-08-21T07:07:41.000Z</updated>
+  <updated>2015-08-22T15:24:01.000Z</updated>
   <id>https://sntd.github.io/</id>
   
   <author>
@@ -13,6 +13,80 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[iOS7之后JavaScript与Objective-C之间的通信]]></title>
+    <link href="https://sntd.github.io/2015/08/22/JavaScript%E4%B8%8EObjective-C%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"/>
+    <id>https://sntd.github.io/2015/08/22/JavaScript与Objective-C之间的通信/</id>
+    <published>2015-08-22T15:23:33.000Z</published>
+    <updated>2015-08-22T15:24:01.000Z</updated>
+    <content type="html"><![CDATA[<p>最近公司用<a href="https://pingxx.com" target="_blank" rel="external">Ping++</a>集成了第三方支付，并且微信端也集成了这个功能，而微信付款时需要调用原生的支付宝支付或者微信支付，由此引出了JS调用OC方法的问题。</p>
+<h1 id="Js_-&gt;_Native">Js -&gt; Native</h1><p>以前传统的做法是根据url字符串来做特殊匹配，从而完成一些特定的工作譬如</p>
+<pre><code>- (<span class="built_in">BOOL</span>)webView:(<span class="built_in">UIWebView</span> *)webView shouldStartLoadWithRequest:(<span class="built_in">NSURLRequest</span> *)request navigationType:(<span class="built_in">UIWebViewNavigationType</span>)navigationType
+{
+    <span class="built_in">NSString</span> *requestString = [[request URL] absoluteString];
+    <span class="built_in">NSString</span> *scheme = <span class="string">@"js-pingpp"</span>;
+    <span class="built_in">NSString</span> *protocol = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@://"</span>, scheme];
+    <span class="keyword">if</span> ([requestString hasPrefix:protocol]) {
+            <span class="comment">//调用相应支付Api</span>
+        }
+        <span class="keyword">return</span> <span class="literal">NO</span>;
+    }
+    <span class="keyword">return</span> <span class="literal">YES</span>;
+}
+</code></pre><p>但是iOS7之后, iOS 7 引入了 JavaScriptCore 库，它把 WebKit 的 JavaScript 引擎用 Objective-C 封装,让JavaScript与Objective-C之间的通信变的非常简单。</p>
+<p>JS端：</p>
+<pre><code><span class="tag">TXBB_IOS_SDK</span><span class="class">.callPay</span>(<span class="tag">charge</span>, <span class="tag">this</span><span class="class">.success</span>, <span class="tag">this</span><span class="class">.cancel</span>);
+</code></pre><p>OC端:</p>
+<p>.h中引入头文件，并实现协议和对应的方法</p>
+<pre><code><span class="preprocessor">#import <span class="title">&lt;JavaScriptCore/JavaScriptCore.h&gt;</span></span>
+
+<span class="class"><span class="keyword">@protocol</span> <span class="title">WebViewJSExport</span> &lt;<span class="title">JSExport</span>&gt;</span>
+JSExportAs
+(callPay  <span class="comment">/** handleFactorialback 作为js方法的别名 */</span>,
+- (<span class="keyword">void</span>)callPay:(<span class="built_in">NSString</span> *)charge success:(<span class="built_in">NSString</span> *) success cancel:(<span class="built_in">NSString</span> *)cancel
+ );
+<span class="keyword">@end</span>
+
+<span class="class"><span class="keyword">@interface</span> <span class="title">BLWebviewController</span> : <span class="title">BLStatisticController</span></span>
+&lt;<span class="built_in">UIWebViewDelegate</span>, WebViewJSExport&gt;
+<span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) JSContext *context;
+<span class="keyword">@end</span>
+</code></pre><p>.m中在webViewDidFinishLoad中给context赋值，并把self指针给TXBB_IOS_SDK,JS端即可经过TXBB_IOS_SDK.callPay调用起Native方法</p>
+<pre><code>-(<span class="keyword">void</span>)webViewDidFinishLoad:(<span class="built_in">UIWebView</span> *)webView
+{
+    <span class="keyword">self</span><span class="variable">.context</span> = [webView valueForKeyPath:<span class="string">@"documentView.webView.mainFrame.javaScriptContext"</span>];
+
+    <span class="keyword">self</span><span class="variable">.context</span>[<span class="string">@"TXBB_IOS_SDK"</span>] = <span class="keyword">self</span>;
+}
+
+<span class="preprocessor">#pragma mark - JSExport Methods</span>
+- (<span class="keyword">void</span>)callPay:(<span class="built_in">NSString</span> *)charge success:(<span class="built_in">NSString</span> *) success cancel:(<span class="built_in">NSString</span> *)cancel {
+    ...
+    [Pingpp createPayment:charge appURLScheme:<span class="string">@"msc"</span> withCompletion:completion];
+}
+</code></pre><h1 id="Native_-&gt;_Js">Native -&gt; Js</h1><p>OC端调用JS代码则只需通过context调用evaluateScript方法即可，下列代码即会用JS显示Hello World,而在iOS7.0之前你可能通过<code>[webView stringByEvaluatingJavaScriptFromString:@&quot;document.title&quot;]</code>方法来获取WebView的title。</p>
+<pre><code>-(<span class="typename">void</span>)<span class="string">webViewDidFinishLoad:</span>(UIWebView *)webView  
+{   
+    JSContext *context=[webView <span class="string">valueForKeyPath:</span>@<span class="string">"documentView.webView.mainFrame.javaScriptContext"</span>];  
+    NSString *alertJs=@<span class="string">"alert('Hello Word')"</span>; 
+    [context <span class="string">evaluateScript:</span>alertJs];
+}  
+</code></pre><h1 id="最后">最后</h1><p>JS和OC通信还有个非常著名的第三方库<a href="https://github.com/marcuswestin/WebViewJavascriptBridge" target="_blank" rel="external">WebViewJavascriptBridge</a>,如果你的项目需要支持iOS6之前的系统，你可以通过这个项目实现JS和OC的通信。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>最近公司用<a href="https://pingxx.com" target="_blank" rel="external">Ping++</a>集成了第三方支付，并且微信端也集成了这个功能，而微信付款时需要调用原生的支付宝支付或者微信支付，由此引出了JS调用OC方法的]]>
+    </summary>
+    
+      <category term="JavaScript" scheme="https://sntd.github.io/tags/JavaScript/"/>
+    
+      <category term="Objective-C" scheme="https://sntd.github.io/tags/Objective-C/"/>
+    
+      <category term="iOS7" scheme="https://sntd.github.io/tags/iOS7/"/>
+    
+      <category term="前端交互" scheme="https://sntd.github.io/categories/%E5%89%8D%E7%AB%AF%E4%BA%A4%E4%BA%92/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[关于UINavigationBar 和 UINavigationController的一点思考]]></title>
