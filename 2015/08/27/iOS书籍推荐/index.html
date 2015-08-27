@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,Objective-C,iOS7," />
+  <meta name="keywords" content="Objective-C高级编程,UINavigationBar," />
 
 
 
@@ -41,22 +41,25 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="最近公司用Ping++集成了第三方支付，并且微信端也集成了这个功能，而微信付款时需要调用原生的支付宝支付或者微信支付，由此引出了JS调用OC方法的问题。
-Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配，从而完成一些特定的工作譬如
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLR">
+<meta name="description" content="本周阅读了两本iOS书籍,都相当的不错！
+禅与 Objective-C 编程艺术本书常看到有人分享推荐，终于抽了时间看了，看的时候就震惊了！一直都在思考iOS的代码规范问题，本书完美的解决了我的问题，几乎每个知识点都是经验之谈，iOS代码规范必读书籍，强推！
+Objective-C高级编程:iOS与OS X多线程和内存管理本书共三章:自动引用计数 Blocks 以及GCD
+这本算是内功修养了，对扎">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS7之后JavaScript与Objective-C之间的通信">
-<meta property="og:url" content="https://sntd.github.io/2015/08/22/JavaScript与Objective-C之间的通信/index.html">
+<meta property="og:title" content="禅与 Objective-C 编程艺术 和 Objective-C高级编程">
+<meta property="og:url" content="https://sntd.github.io/2015/08/27/iOS书籍推荐/index.html">
 <meta property="og:site_name" content="时乃天道">
-<meta property="og:description" content="最近公司用Ping++集成了第三方支付，并且微信端也集成了这个功能，而微信付款时需要调用原生的支付宝支付或者微信支付，由此引出了JS调用OC方法的问题。
-Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配，从而完成一些特定的工作譬如
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLR">
-<meta property="og:updated_time" content="2015-08-22T15:30:14.000Z">
+<meta property="og:description" content="本周阅读了两本iOS书籍,都相当的不错！
+禅与 Objective-C 编程艺术本书常看到有人分享推荐，终于抽了时间看了，看的时候就震惊了！一直都在思考iOS的代码规范问题，本书完美的解决了我的问题，几乎每个知识点都是经验之谈，iOS代码规范必读书籍，强推！
+Objective-C高级编程:iOS与OS X多线程和内存管理本书共三章:自动引用计数 Blocks 以及GCD
+这本算是内功修养了，对扎">
+<meta property="og:updated_time" content="2015-08-27T10:19:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS7之后JavaScript与Objective-C之间的通信">
-<meta name="twitter:description" content="最近公司用Ping++集成了第三方支付，并且微信端也集成了这个功能，而微信付款时需要调用原生的支付宝支付或者微信支付，由此引出了JS调用OC方法的问题。
-Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配，从而完成一些特定的工作譬如
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLR">
+<meta name="twitter:title" content="禅与 Objective-C 编程艺术 和 Objective-C高级编程">
+<meta name="twitter:description" content="本周阅读了两本iOS书籍,都相当的不错！
+禅与 Objective-C 编程艺术本书常看到有人分享推荐，终于抽了时间看了，看的时候就震惊了！一直都在思考iOS的代码规范问题，本书完美的解决了我的问题，几乎每个知识点都是经验之谈，iOS代码规范必读书籍，强推！
+Objective-C高级编程:iOS与OS X多线程和内存管理本书共三章:自动引用计数 Blocks 以及GCD
+这本算是内功修养了，对扎">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -66,7 +69,7 @@ Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配�
   };
 </script>
 
-  <title> iOS7之后JavaScript与Objective-C之间的通信 | 时乃天道 </title>
+  <title> 禅与 Objective-C 编程艺术 和 Objective-C高级编程 | 时乃天道 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -212,7 +215,7 @@ Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配�
           
           
             
-              iOS7之后JavaScript与Objective-C之间的通信
+              禅与 Objective-C 编程艺术 和 Objective-C高级编程
             
           
         </h1>
@@ -221,8 +224,8 @@ Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配�
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-08-22T23:23:33+08:00" content="2015-08-22">
-            2015-08-22
+          <time itemprop="dateCreated" datetime="2015-08-27T21:31:33+08:00" content="2015-08-27">
+            2015-08-27
           </time>
         </span>
 
@@ -231,8 +234,8 @@ Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配�
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/前端交互/" itemprop="url" rel="index">
-                  <span itemprop="name">前端交互</span>
+                <a href="/categories/iOS书籍/" itemprop="url" rel="index">
+                  <span itemprop="name">iOS书籍</span>
                 </a>
               </span>
 
@@ -247,8 +250,8 @@ Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配�
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/08/22/JavaScript与Objective-C之间的通信/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/22/JavaScript与Objective-C之间的通信/" itemprop="commentsCount"></span>
+            <a href="/2015/08/27/iOS书籍推荐/#comments" itemprop="discussionUrl">
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/08/27/iOS书籍推荐/" itemprop="commentsCount"></span>
             </a>
           </span>
           
@@ -262,59 +265,11 @@ Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配�
       
 
       
-        <span itemprop="articleBody"><p>最近公司用<a href="https://pingxx.com" target="_blank" rel="external">Ping++</a>集成了第三方支付，并且微信端也集成了这个功能，而微信付款时需要调用原生的支付宝支付或者微信支付，由此引出了JS调用OC方法的问题。</p>
-<h1 id="Js_-&gt;_Native">Js -&gt; Native</h1><p>以前传统的做法是根据url字符串来做特殊匹配，从而完成一些特定的工作譬如</p>
-<pre><code>- (<span class="built_in">BOOL</span>)webView:(<span class="built_in">UIWebView</span> *)webView shouldStartLoadWithRequest:(<span class="built_in">NSURLRequest</span> *)request navigationType:(<span class="built_in">UIWebViewNavigationType</span>)navigationType
-{
-    <span class="built_in">NSString</span> *requestString = [[request URL] absoluteString];
-    <span class="built_in">NSString</span> *scheme = <span class="string">@"js-pingpp"</span>;
-    <span class="built_in">NSString</span> *protocol = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@://"</span>, scheme];
-    <span class="keyword">if</span> ([requestString hasPrefix:protocol]) {
-            <span class="comment">//调用相应支付Api</span>
-        }
-        <span class="keyword">return</span> <span class="literal">NO</span>;
-    }
-    <span class="keyword">return</span> <span class="literal">YES</span>;
-}
-</code></pre><p>但是iOS7之后, iOS 7 引入了 JavaScriptCore 库，它把 WebKit 的 JavaScript 引擎用 Objective-C 封装,让JavaScript与Objective-C之间的通信变的非常简单。首先导入JavaScriptCore.framework框架, 然后</p>
-<p>JS端：</p>
-<pre><code><span class="tag">TXBB_IOS_SDK</span><span class="class">.callPay</span>(<span class="tag">charge</span>, <span class="tag">this</span><span class="class">.success</span>, <span class="tag">this</span><span class="class">.cancel</span>);
-</code></pre><p>OC端:</p>
-<p>.h中引入头文件，并实现协议和对应的方法</p>
-<pre><code><span class="preprocessor">#import <span class="title">&lt;JavaScriptCore/JavaScriptCore.h&gt;</span></span>
-
-<span class="class"><span class="keyword">@protocol</span> <span class="title">WebViewJSExport</span> &lt;<span class="title">JSExport</span>&gt;</span>
-JSExportAs
-(callPay  <span class="comment">/** handleFactorialback 作为js方法的别名 */</span>,
-- (<span class="keyword">void</span>)callPay:(<span class="built_in">NSString</span> *)charge success:(<span class="built_in">NSString</span> *) success cancel:(<span class="built_in">NSString</span> *)cancel
- );
-<span class="keyword">@end</span>
-
-<span class="class"><span class="keyword">@interface</span> <span class="title">BLWebviewController</span> : <span class="title">BLStatisticController</span></span>
-&lt;<span class="built_in">UIWebViewDelegate</span>, WebViewJSExport&gt;
-<span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) JSContext *context;
-<span class="keyword">@end</span>
-</code></pre><p>.m中在webViewDidFinishLoad中给context赋值，并把self指针给TXBB_IOS_SDK,JS端即可经过TXBB_IOS_SDK.callPay调用起Native方法</p>
-<pre><code>-(<span class="keyword">void</span>)webViewDidFinishLoad:(<span class="built_in">UIWebView</span> *)webView
-{
-    <span class="keyword">self</span><span class="variable">.context</span> = [webView valueForKeyPath:<span class="string">@"documentView.webView.mainFrame.javaScriptContext"</span>];
-
-    <span class="keyword">self</span><span class="variable">.context</span>[<span class="string">@"TXBB_IOS_SDK"</span>] = <span class="keyword">self</span>;
-}
-
-<span class="preprocessor">#pragma mark - JSExport Methods</span>
-- (<span class="keyword">void</span>)callPay:(<span class="built_in">NSString</span> *)charge success:(<span class="built_in">NSString</span> *) success cancel:(<span class="built_in">NSString</span> *)cancel {
-    ...
-    [Pingpp createPayment:charge appURLScheme:<span class="string">@"msc"</span> withCompletion:completion];
-}
-</code></pre><h1 id="Native_-&gt;_Js">Native -&gt; Js</h1><p>OC端调用JS代码则只需通过context调用evaluateScript方法即可，下列代码即会用JS显示Hello World,而在iOS7.0之前你可能通过<code>[webView stringByEvaluatingJavaScriptFromString:@&quot;document.title&quot;]</code>方法来获取WebView的title。</p>
-<pre><code>-(<span class="typename">void</span>)<span class="string">webViewDidFinishLoad:</span>(UIWebView *)webView  
-{   
-    JSContext *context=[webView <span class="string">valueForKeyPath:</span>@<span class="string">"documentView.webView.mainFrame.javaScriptContext"</span>];  
-    NSString *alertJs=@<span class="string">"alert('Hello Word')"</span>; 
-    [context <span class="string">evaluateScript:</span>alertJs];
-}  
-</code></pre><h1 id="最后">最后</h1><p>JS和OC通信还有个非常著名的第三方库<a href="https://github.com/marcuswestin/WebViewJavascriptBridge" target="_blank" rel="external">WebViewJavascriptBridge</a>,如果你的项目需要支持iOS6之前的系统，你可以通过这个项目实现JS和OC的通信。</p>
+        <span itemprop="articleBody"><p>本周阅读了两本iOS书籍,都相当的不错！</p>
+<h1 id="禅与_Objective-C_编程艺术"><a href="https://github.com/oa414/objc-zen-book-cn" target="_blank" rel="external">禅与 Objective-C 编程艺术</a></h1><p>本书常看到有人分享推荐，终于抽了时间看了，看的时候就震惊了！一直都在思考iOS的代码规范问题，本书完美的解决了我的问题，几乎每个知识点都是经验之谈，iOS代码规范必读书籍，强推！</p>
+<h1 id="Objective-C高级编程:iOS与OS_X多线程和内存管理"><a href="http://www.amazon.cn/dp/B00DE60G3S/ref=cm_sw_r_qz_2_dp_hdPPub11MFE6G" target="_blank" rel="external">Objective-C高级编程:iOS与OS X多线程和内存管理</a></h1><p>本书共三章:自动引用计数 Blocks 以及GCD</p>
+<p>这本算是内功修养了，对扎实iOS开发的理解非常有用, GCD基本介绍的也比较全面,比之前零散的看一些多线程的博客真是舒服多了！</p>
+<h1 id="杂感">杂感</h1><p>老外写的书籍真是相当的不错啊,整体质量比国内的要高出很多，不禁为自己拙劣的英文水平感到着急，不然就可以直接阅读英文资料了！</p>
 </span>
       
     </div>
@@ -323,11 +278,9 @@ JSExportAs
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+            <a href="/tags/Objective-C高级编程/" rel="tag">#Objective-C高级编程</a>
           
-            <a href="/tags/Objective-C/" rel="tag">#Objective-C</a>
-          
-            <a href="/tags/iOS7/" rel="tag">#iOS7</a>
+            <a href="/tags/UINavigationBar/" rel="tag">#UINavigationBar</a>
           
         </div>
       
@@ -336,13 +289,11 @@ JSExportAs
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/24/LDButton/" rel="prev">UIButton的扩展:随心所欲调整Image和Label的位置</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/08/20/UINavigation的一点思考/" rel="next">关于UINavigationBar 和 UINavigationController的一点思考</a>
+              <a href="/2015/08/24/LDButton/" rel="next">UIButton的扩展:随心所欲调整Image和Label的位置</a>
             
           </div>
         </div>
@@ -473,7 +424,7 @@ JSExportAs
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Js_->_Native"><span class="nav-number">1.</span> <span class="nav-text">Js -> Native</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Native_->_Js"><span class="nav-number">2.</span> <span class="nav-text">Native -> Js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#禅与_Objective-C_编程艺术"><span class="nav-number">1.</span> <span class="nav-text">禅与 Objective-C 编程艺术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Objective-C高级编程:iOS与OS_X多线程和内存管理"><span class="nav-number">2.</span> <span class="nav-text">Objective-C高级编程:iOS与OS X多线程和内存管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#杂感"><span class="nav-number">3.</span> <span class="nav-text">杂感</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -527,9 +478,9 @@ JSExportAs
 
     <script type="text/javascript">
       var disqus_shortname = 'sntdgithubio';
-      var disqus_identifier = '2015/08/22/JavaScript与Objective-C之间的通信/';
-      var disqus_title = 'iOS7之后JavaScript与Objective-C之间的通信';
-      var disqus_url = 'https://sntd.github.io/2015/08/22/JavaScript与Objective-C之间的通信/';
+      var disqus_identifier = '2015/08/27/iOS书籍推荐/';
+      var disqus_title = '禅与 Objective-C 编程艺术 和 Objective-C高级编程';
+      var disqus_url = 'https://sntd.github.io/2015/08/27/iOS书籍推荐/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

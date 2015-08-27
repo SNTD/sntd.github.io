@@ -4,7 +4,7 @@
   <subtitle><![CDATA[路漫漫其修远兮，吾将上下而求索]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sntd.github.io/"/>
-  <updated>2015-08-27T09:36:42.000Z</updated>
+  <updated>2015-08-27T10:19:40.000Z</updated>
   <id>https://sntd.github.io/</id>
   
   <author>
@@ -13,6 +13,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[禅与 Objective-C 编程艺术 和 Objective-C高级编程]]></title>
+    <link href="https://sntd.github.io/2015/08/27/iOS%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/"/>
+    <id>https://sntd.github.io/2015/08/27/iOS书籍推荐/</id>
+    <published>2015-08-27T13:31:33.000Z</published>
+    <updated>2015-08-27T10:19:40.000Z</updated>
+    <content type="html"><![CDATA[<p>本周阅读了两本iOS书籍,都相当的不错！</p>
+<h1 id="禅与_Objective-C_编程艺术"><a href="https://github.com/oa414/objc-zen-book-cn" target="_blank" rel="external">禅与 Objective-C 编程艺术</a></h1><p>本书常看到有人分享推荐，终于抽了时间看了，看的时候就震惊了！一直都在思考iOS的代码规范问题，本书完美的解决了我的问题，几乎每个知识点都是经验之谈，iOS代码规范必读书籍，强推！</p>
+<h1 id="Objective-C高级编程:iOS与OS_X多线程和内存管理"><a href="http://www.amazon.cn/dp/B00DE60G3S/ref=cm_sw_r_qz_2_dp_hdPPub11MFE6G" target="_blank" rel="external">Objective-C高级编程:iOS与OS X多线程和内存管理</a></h1><p>本书共三章:自动引用计数 Blocks 以及GCD</p>
+<p>这本算是内功修养了，对扎实iOS开发的理解非常有用, GCD基本介绍的也比较全面,比之前零散的看一些多线程的博客真是舒服多了！</p>
+<h1 id="杂感">杂感</h1><p>老外写的书籍真是相当的不错啊,整体质量比国内的要高出很多，不禁为自己拙劣的英文水平感到着急，不然就可以直接阅读英文资料了！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>本周阅读了两本iOS书籍,都相当的不错！</p>
+<h1 id="禅与_Objective-C_编程艺术"><a href="https://github.com/oa414/objc-zen-book-cn" target="_blank" rel="external">]]>
+    </summary>
+    
+      <category term="Objective-C高级编程" scheme="https://sntd.github.io/tags/Objective-C%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="UINavigationBar" scheme="https://sntd.github.io/tags/UINavigationBar/"/>
+    
+      <category term="iOS书籍" scheme="https://sntd.github.io/categories/iOS%E4%B9%A6%E7%B1%8D/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[UIButton的扩展:随心所欲调整Image和Label的位置]]></title>
