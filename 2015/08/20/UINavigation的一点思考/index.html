@@ -49,7 +49,7 @@
 <meta property="og:description" content="UINavigationBar最近在项目中引入了ZSSRichTextEditor用来编辑HTML文本,结果Push的时候ZSSRichTextEditor用的原生的ViewController跟项目中自定义的NavigationController产生了冲突,导致了ZSSRichTextEditor缺失了NavigationBar,查看代码后`self.navigationBar.hidden">
 <meta property="og:image" content="https://github.com/SNTD/sntd.github.io/raw/master/gif/淘宝.gif">
 <meta property="og:image" content="https://github.com/SNTD/sntd.github.io/raw/master/gif/微信.gif">
-<meta property="og:updated_time" content="2015-08-23T06:40:09.000Z">
+<meta property="og:updated_time" content="2015-09-02T07:29:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于UINavigationBar 和 UINavigationController的一点思考">
 <meta name="twitter:description" content="UINavigationBar最近在项目中引入了ZSSRichTextEditor用来编辑HTML文本,结果Push的时候ZSSRichTextEditor用的原生的ViewController跟项目中自定义的NavigationController产生了冲突,导致了ZSSRichTextEditor缺失了NavigationBar,查看代码后`self.navigationBar.hidden">
@@ -269,9 +269,10 @@
         <span itemprop="articleBody"><h1 id="UINavigationBar">UINavigationBar</h1><p>最近在项目中引入了<a href="https://github.com/nnhubbard/ZSSRichTextEditor" target="_blank" rel="external">ZSSRichTextEditor</a>用来编辑HTML文本,结果Push的时候ZSSRichTextEditor用的原生的ViewController跟项目中自定义的NavigationController产生了冲突,导致了ZSSRichTextEditor缺失了NavigationBar,查看代码后<code>`self.navigationBar.hidden = YES;</code></p>
 <p>原来项目中隐藏了系统的NavigationBar,并在ViewController中重新写了NavigationBar,因为我所有ViewController都继承自自定义的ViewController,所以没有问题。于是我在ZSSRichTextEditor中重写写了NavigationBar跟项目保持一致解决了这个问题。</p>
 <p><strong>由此我开始思考,客户端有哪些NavigationBar实现方式</strong></p>
-<p><strong>淘宝客户端:</strong> 淘宝首页，push进入下一个页面的时候，NavigationBar是不一样的，实现原理应该是隐藏了系统的NavigationBar，然后在自己的每个ViewController中加上了不同的NavigationBar</p>
-<p> <img src="https://github.com/SNTD/sntd.github.io/raw/master/gif/淘宝.gif" alt=""> </p>
-<p><strong>微信客户端:</strong> 微信几乎都是一样的NavigationBar,其实现原理应该跟我项目一致,统一继承了同一个自定义的ViewController,重新设置了NavigationBar的颜色，系统自带的是白色。</p>
+<p><strong>淘宝客户端:</strong> 淘宝首页，push进入下一个页面的时候，NavigationBar是不一样的，实现方式:</p>
+<p>(1)隐藏系统的NavigationBar，然后在自己的每个ViewController中自定义View,画一个NavigationBar上去</p>
+<p>(2)采用系统的NavigationBar,利用titleView NavigationItem高度自我定制,非常推荐这种做法，尽量不要隐藏系统的NavigationBar,采用在具体的ViewControll中特殊处理来达到效果，这样在引入github第三库的时候，就不会缺失NavigationBar。<br> <img src="https://github.com/SNTD/sntd.github.io/raw/master/gif/淘宝.gif" alt=""> </p>
+<p><strong>微信客户端:</strong> 微信几乎都是一样的NavigationBar,其实现方式应该跟我项目一致,统一继承了同一个自定义的ViewController,重新设置了NavigationBar的颜色，系统自带的是白色。</p>
 <p> <img src="https://github.com/SNTD/sntd.github.io/raw/master/gif/微信.gif" alt=""></p>
 <h1 id="UINavigationController">UINavigationController</h1><p>最近在项目中第一次实现了Cell左滑删除的功能，结果发现删除非常不灵敏，经常无法左滑！查看NavigationController代码:</p>
 <pre><code><span class="built_in">UIPanGestureRecognizer</span> *recognizer = [[<span class="built_in">UIPanGestureRecognizer</span> alloc]initWithTarget:<span class="keyword">self</span>
@@ -408,7 +409,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
