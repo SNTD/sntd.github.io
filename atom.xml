@@ -4,7 +4,7 @@
   <subtitle><![CDATA[iOS开发者]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sntd.github.io/"/>
-  <updated>2015-08-28T14:07:52.000Z</updated>
+  <updated>2015-08-27T09:36:42.000Z</updated>
   <id>https://sntd.github.io/</id>
   
   <author>
@@ -13,19 +13,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="https://sntd.github.io/2015/08/28/iOS%E4%B9%A6%E7%B1%8D/"/>
-    <id>https://sntd.github.io/2015/08/28/iOS书籍/</id>
-    <published>2015-08-28T14:07:52.000Z</published>
-    <updated>2015-08-28T14:07:52.000Z</updated>
-    <content type="html"></content>
-    <summary type="html">
-    
-    </summary>
-    
-  </entry>
   
   <entry>
     <title><![CDATA[UIButton的扩展:随心所欲调整Image和Label的位置]]></title>
@@ -90,7 +77,7 @@ btn.labelRect = CGRectMake(<span class="number">0</span>, <span class="number">5
     <link href="https://sntd.github.io/2015/08/22/JavaScript%E4%B8%8EObjective-C%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/"/>
     <id>https://sntd.github.io/2015/08/22/JavaScript与Objective-C之间的通信/</id>
     <published>2015-08-22T15:23:33.000Z</published>
-    <updated>2015-08-22T15:30:14.000Z</updated>
+    <updated>2015-09-04T01:30:25.000Z</updated>
     <content type="html"><![CDATA[<p>最近公司用<a href="https://pingxx.com" target="_blank" rel="external">Ping++</a>集成了第三方支付，并且微信端也集成了这个功能，而微信付款时需要调用原生的支付宝支付或者微信支付，由此引出了JS调用OC方法的问题。</p>
 <h1 id="Js_-&gt;_Native">Js -&gt; Native</h1><p>以前传统的做法是根据url字符串来做特殊匹配，从而完成一些特定的工作譬如</p>
 <pre><code>- (<span class="built_in">BOOL</span>)webView:(<span class="built_in">UIWebView</span> *)webView shouldStartLoadWithRequest:(<span class="built_in">NSURLRequest</span> *)request navigationType:(<span class="built_in">UIWebViewNavigationType</span>)navigationType
@@ -99,8 +86,9 @@ btn.labelRect = CGRectMake(<span class="number">0</span>, <span class="number">5
     <span class="built_in">NSString</span> *scheme = <span class="string">@"js-pingpp"</span>;
     <span class="built_in">NSString</span> *protocol = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@://"</span>, scheme];
     <span class="keyword">if</span> ([requestString hasPrefix:protocol]) {
-            <span class="comment">//调用相应支付Api</span>
-        }
+        <span class="comment">//调用相应支付Api</span>
+        <span class="comment">/*do something*/</span>
+
         <span class="keyword">return</span> <span class="literal">NO</span>;
     }
     <span class="keyword">return</span> <span class="literal">YES</span>;

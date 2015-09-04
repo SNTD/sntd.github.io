@@ -51,7 +51,7 @@ Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配�
 <meta property="og:description" content="最近公司用Ping++集成了第三方支付，并且微信端也集成了这个功能，而微信付款时需要调用原生的支付宝支付或者微信支付，由此引出了JS调用OC方法的问题。
 Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配，从而完成一些特定的工作譬如
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLR">
-<meta property="og:updated_time" content="2015-08-22T15:30:14.000Z">
+<meta property="og:updated_time" content="2015-09-04T01:30:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS7之后JavaScript与Objective-C之间的通信">
 <meta name="twitter:description" content="最近公司用Ping++集成了第三方支付，并且微信端也集成了这个功能，而微信付款时需要调用原生的支付宝支付或者微信支付，由此引出了JS调用OC方法的问题。
@@ -278,8 +278,9 @@ Js -&amp;gt; Native以前传统的做法是根据url字符串来做特殊匹配�
     <span class="built_in">NSString</span> *scheme = <span class="string">@"js-pingpp"</span>;
     <span class="built_in">NSString</span> *protocol = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@://"</span>, scheme];
     <span class="keyword">if</span> ([requestString hasPrefix:protocol]) {
-            <span class="comment">//调用相应支付Api</span>
-        }
+        <span class="comment">//调用相应支付Api</span>
+        <span class="comment">/*do something*/</span>
+
         <span class="keyword">return</span> <span class="literal">NO</span>;
     }
     <span class="keyword">return</span> <span class="literal">YES</span>;
@@ -416,7 +417,7 @@ JSExportAs
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
