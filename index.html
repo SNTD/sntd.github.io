@@ -452,8 +452,7 @@ Js -&gt; Native以前传统的做法是根据url字符串来做特殊匹配，�
         
           <span itemprop="articleBody">
             
-            UINavigationBar最近在项目中引入了ZSSRichTextEditor用来编辑HTML文本,结果Push的时候ZSSRichTextEditor用的原生的ViewController跟项目中自定义的NavigationController产生了冲突,导致了ZSSRichTextEditor缺失了NavigationBar,查看代码后`self.navigationBar.hidden = YES;
-原来项目中隐藏了系统的NavigationBar,并在ViewController中重新写了NavigationBar,因为我所有ViewController都继承自自定义的ViewCo
+            UINavigationBar最近在项目中引入了ZSSRichTextEditor用来编辑HTML文本,结果Push的时候ZSSRichTextEditor用的原生的ViewController跟项目中自定义的NavigationController产生了冲突,导致了ZSSRichTextEditor缺失了NavigationBar,忽然想起项目中隐藏了系统的NavigationBar,并在ViewController中重新写了NavigationBar,因为我所有ViewController都继承自自定义的ViewController,所以没有问题。于是我在ZSSRichTextEditor
             ...
           </span>
           <div class="post-more-link text-center">

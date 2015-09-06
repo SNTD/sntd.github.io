@@ -152,9 +152,8 @@ JSExportAs
     <link href="https://sntd.github.io/2015/08/20/UINavigation%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/"/>
     <id>https://sntd.github.io/2015/08/20/UINavigation的一点思考/</id>
     <published>2015-08-20T12:01:33.000Z</published>
-    <updated>2015-09-02T07:29:12.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="UINavigationBar">UINavigationBar</h1><p>最近在项目中引入了<a href="https://github.com/nnhubbard/ZSSRichTextEditor" target="_blank" rel="external">ZSSRichTextEditor</a>用来编辑HTML文本,结果Push的时候ZSSRichTextEditor用的原生的ViewController跟项目中自定义的NavigationController产生了冲突,导致了ZSSRichTextEditor缺失了NavigationBar,查看代码后<code>`self.navigationBar.hidden = YES;</code></p>
-<p>原来项目中隐藏了系统的NavigationBar,并在ViewController中重新写了NavigationBar,因为我所有ViewController都继承自自定义的ViewController,所以没有问题。于是我在ZSSRichTextEditor中重写写了NavigationBar跟项目保持一致解决了这个问题。</p>
+    <updated>2015-09-06T07:39:38.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="UINavigationBar">UINavigationBar</h1><p>最近在项目中引入了<a href="https://github.com/nnhubbard/ZSSRichTextEditor" target="_blank" rel="external">ZSSRichTextEditor</a>用来编辑HTML文本,结果Push的时候ZSSRichTextEditor用的原生的ViewController跟项目中自定义的NavigationController产生了冲突,导致了ZSSRichTextEditor缺失了NavigationBar,忽然想起项目中隐藏了系统的NavigationBar,并在ViewController中重新写了NavigationBar,因为我所有ViewController都继承自自定义的ViewController,所以没有问题。于是我在ZSSRichTextEditor中重写写了NavigationBar跟项目保持一致解决了这个问题。</p>
 <p><strong>由此我开始思考,客户端有哪些NavigationBar实现方式</strong></p>
 <p><strong>淘宝客户端:</strong> 淘宝首页，push进入下一个页面的时候，NavigationBar是不一样的，实现方式:</p>
 <p>(1)隐藏系统的NavigationBar，然后在自己的每个ViewController中自定义View,画一个NavigationBar上去</p>
