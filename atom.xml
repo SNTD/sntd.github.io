@@ -4,7 +4,7 @@
   <subtitle><![CDATA[iOS开发者]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="https://sntd.github.io/"/>
-  <updated>2015-08-27T09:36:42.000Z</updated>
+  <updated>2015-09-04T01:30:25.000Z</updated>
   <id>https://sntd.github.io/</id>
   
   <author>
@@ -13,64 +13,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title><![CDATA[UIButton的扩展:随心所欲调整Image和Label的位置]]></title>
-    <link href="https://sntd.github.io/2015/08/24/LDButton/"/>
-    <id>https://sntd.github.io/2015/08/24/LDButton/</id>
-    <published>2015-08-24T12:01:33.000Z</published>
-    <updated>2015-08-27T09:36:42.000Z</updated>
-    <content type="html"><![CDATA[<p>刚开始学iOS的时候，一直通过imageInserts 和 titleInserts 设置UIButton的Image以及Label位置，但是它们两个经常互相挤，导致需要特殊效果譬如Image和Label 左右分布，上下分布等功能实现起来颇为麻烦，经常需要调整。而采用UIImage＋UILabel + 手势的组合实现起来又过于繁琐，于是研究了下UIButton,写了自定义的<a href="https://github.com/SNTD/LDButton" target="_blank" rel="external">LDButton</a>用来实现对Image 和 Label的位置有特殊要求的功能。</p>
-<h1 id="LDButton效果演示">LDButton效果演示</h1><p><img src="https://github.com/sntd/LDButton/raw/master/Picture/LDButton.gif" alt=""></p>
-<h1 id="如何使用LDButton">如何使用LDButton</h1><p>你只需要按照你的意愿设置 Image 和 Label 的位置即可，如果不设置则会退化成UIButton</p>
-<pre><code><span class="comment">//核心设置</span>
-btn.imageRect = CGRectMake((btnWidth - <span class="number">40</span>)/<span class="number">2.0</span>, <span class="number">50</span> - <span class="number">30</span>, <span class="number">40</span>, <span class="number">30</span>);
-btn.labelRect = CGRectMake(<span class="number">0</span>, <span class="number">50</span>, btnWidth, <span class="number">30</span>);
-</code></pre><h1 id="代码实现">代码实现</h1><p>核心代码是重写imageRectForContentRect和titleRectForContentRect两个方法,直接返回设置的imageRect 和 labelRect.</p>
-<h2 id="问题一：有时需要调整Button的大小,内部的Image的Frame要跟着变">问题一：有时需要调整Button的大小,内部的Image的Frame要跟着变</h2><p>这直接重写ImageRect的set方法即可,调用setNeedsDisplay会重刷imageRectForContentRect方法</p>
-<pre><code><span class="tag">-</span> (<span class="tag">void</span>)<span class="rule"><span class="attribute">setImageRect</span>:<span class="value">(CGRect)imageRect {
-    _imageRect = imageRect</span></span>;
-
-    <span class="attr_selector">[self setNeedsDisplay]</span>;
-}
-</code></pre><h2 id="问题二：有的时候经常忘记设置imageRect和labelRect,结果直接崩溃了">问题二：有的时候经常忘记设置imageRect和labelRect,结果直接崩溃了</h2><p>刚学iOS的时候一直没有找到很好的解决办法，直到我学习了Runtime相关知识,解决方案：没有设置imageRect 和labelRect时，直接返回系统的方法。</p>
-<pre><code><span class="class"><span class="keyword">@implementation</span> <span class="title">NSObject</span>(<span class="title">Extension</span>)</span>
-+ (<span class="keyword">void</span>)swizzleInstanceMethod:(Class)class originalSelector:(SEL)originalSelector swizzledSelector:(SEL)swizzledSelector
-{
-    Method swizzledMehtod = class_getInstanceMethod(class, swizzledSelector);
-    Method originalMehtod = class_getInstanceMethod(class, originalSelector);
-    <span class="comment">// 交换2个方法的实现</span>
-    method_exchangeImplementations(swizzledMehtod, originalMehtod);
-}
-<span class="keyword">@end</span>
-
-+ (<span class="keyword">void</span>)load
-{
-    [<span class="keyword">self</span> swizzleInstanceMethod:<span class="built_in">NSClassFromString</span>(<span class="string">@"LDButton"</span>) originalSelector:<span class="keyword">@selector</span>(imageRectForContentRect:) swizzledSelector:<span class="keyword">@selector</span>(ld_imageRectForContentRect:)];
-
-    [<span class="keyword">self</span> swizzleInstanceMethod:<span class="built_in">NSClassFromString</span>(<span class="string">@"LDButton"</span>) originalSelector:<span class="keyword">@selector</span>(titleRectForContentRect:) swizzledSelector:<span class="keyword">@selector</span>(ld_titleRectForContentRect:)];
-}
-
-- ( <span class="built_in">CGRect</span> )ld_imageRectForContentRect:( <span class="built_in">CGRect</span> )contentRect
-{
-    <span class="comment">//设置了值就返回设置的值,否则用系统的</span>
-    <span class="keyword">if</span> (!<span class="built_in">CGRectEqualToRect</span>(_imageRect,<span class="built_in">CGRectZero</span>)) {
-        <span class="keyword">return</span> _imageRect;
-    }
-    <span class="keyword">return</span> [<span class="keyword">self</span> ld_imageRectForContentRect:contentRect];
-}
-</code></pre><p>最后：</p>
-<p>详细的demo,大家可以参见GitHub地址<a href="https://github.com/SNTD/LDButton" target="_blank" rel="external">https://github.com/SNTD/LDButton</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>刚开始学iOS的时候，一直通过imageInserts 和 titleInserts 设置UIButton的Image以及Label位置，但是它们两个经常互相挤，导致需要特殊效果譬如Image和Label 左右分布，上下分布等功能实现起来颇为麻烦，经常需要调整。而采用UII]]>
-    </summary>
-    
-      <category term="UIButton" scheme="https://sntd.github.io/tags/UIButton/"/>
-    
-      <category term="UI" scheme="https://sntd.github.io/categories/UI/"/>
-    
-  </entry>
   
   <entry>
     <title><![CDATA[iOS7之后JavaScript与Objective-C之间的通信]]></title>
