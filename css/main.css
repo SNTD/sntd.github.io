@@ -1988,8 +1988,8 @@ ul li {
 .logo-line-after i {
   position: relative;
   display: block;
-  height: 2px;
-  background: #222;
+  height: 80px;
+  /*background: #77d2c5;*/
 }
 @media (max-width: 767px) {
   .logo-line-before i,
