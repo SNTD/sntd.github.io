@@ -1988,7 +1988,7 @@ ul li {
 .logo-line-after i {
   position: relative;
   display: block;
-  height: 80px;
+  height: 2px;
   /*background: #77d2c5;*/
 }
 @media (max-width: 767px) {
